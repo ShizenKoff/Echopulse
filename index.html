@@ -1064,6 +1064,11 @@ setTimeout(() => {
 
     function handleKeydown(ev) {
       const code = ev.code;
+      console.log("SPACE", epState.phase, {
+  rapidEnabled: epState.rapidEnabled,
+  rapidActive: epState.rapidActive
+});
+
 
       if (code === "Space") {
         ev.preventDefault();
