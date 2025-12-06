@@ -186,6 +186,14 @@
   }
 }
 
+@keyframes startFlash {
+  0%   { border-color: rgba(125, 249, 255, 0.2); box-shadow: none; }
+  25%  { border-color: rgba(125, 249, 255, 1);   box-shadow: 0 0 25px rgba(125, 249, 255, 0.8); }
+  50%  { border-color: rgba(125, 249, 255, 0.6); box-shadow: 0 0 15px rgba(125, 249, 255, 0.4); }
+  100% { border-color: rgba(125, 249, 255, 0.4); box-shadow: none; }
+}
+
+
 
     .ep-title-row {
       display: flex;
@@ -676,6 +684,13 @@
     function playTriplePulse() {
       ensureAudioCtx();
       if (!audioCtx) return;
+      elCircleRing.style.animation = "none"; // reset
+void elCircleRing.offsetWidth;         // force reflow
+elCircleRing.style.animation = "startFlash 0.45s ease-out";
+setTimeout(() => {
+  elCircleRing.style.animation = "";
+}, 500);
+
 
       const gap = 0.18;
       scheduleTone(600, 0.00, 0.12, 0.4);
